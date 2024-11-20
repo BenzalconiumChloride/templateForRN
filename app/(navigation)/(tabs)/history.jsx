@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const _layoutDrawer = () => {
+const History = () => {
   return (
     <View>
-      <Text>_layoutDrawer</Text>
+      <Text>History</Text>
     </View>
   )
 }
 
-export default _layoutDrawer
+export default History

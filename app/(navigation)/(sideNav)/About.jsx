@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const _layoutTab = () => {
+const About = () => {
   return (
     <View>
-      <Text>ddfgdgdfgd</Text>
+      <Text>About</Text>
     </View>
   )
 }
 
-export default _layoutTab
+export default About

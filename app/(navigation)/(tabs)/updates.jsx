@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const dfg = () => {
+const Updates = () => {
   return (
     <View>
-      <Text>dfg</Text>
+      <Text>Updates</Text>
     </View>
   )
 }
 
-export default dfg
+export default Updates

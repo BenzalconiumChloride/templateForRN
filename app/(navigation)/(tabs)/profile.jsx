@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const dfg = () => {
+const Profile = () => {
   return (
     <View>
-      <Text>dfg</Text>
+      <Text>Profile</Text>
     </View>
   )
 }
 
-export default dfg
+export default Profile

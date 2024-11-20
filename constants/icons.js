@@ -7,8 +7,11 @@ import notif1 from '../assets/icons/notif1.png';
 import profile from '../assets/icons/profile.png';
 import profile1 from '../assets/icons/profile1.png';
 import scan from '../assets/icons/scan.png';
+import question from '../assets/icons/question.png';
+import info from '../assets/icons/info.png';
+import contact from '../assets/icons/contact.png';
 
-export const icons = {
+export default {
     history,
     history1,
     home,
@@ -18,4 +21,7 @@ export const icons = {
     profile,
     profile1,
     scan,
+    question,
+    info,
+    contact,
 }

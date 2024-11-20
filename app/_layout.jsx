@@ -4,8 +4,6 @@ import { SplashScreen, Stack } from 'expo-router'
 import "../global.css";
 import  { useEffect } from 'react';
 import { useFonts } from 'expo-font';
-import  _layoutDrawer  from './(drawer)/_layoutDrawer.jsx';
-import _layoutTab from './(tabs)/_layoutTab.jsx';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,14 +30,13 @@ const RootLayout = () => {
 
   return (
     <>
-    <View> <_layoutDrawer /> </View>
+   
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="(form)" />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+        <Stack.Screen name="(form)" options={{ headerShown: false }} />
+        <Stack.Screen name="(navigation)" options={{ headerShown: false }} />
       </Stack>
-      <View> <_layoutTab /></View>
+
     </>
   );
 };

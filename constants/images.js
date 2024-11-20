@@ -4,7 +4,7 @@ import ohlogo from '../assets/images/ohlogo.png';
 import silverlogo from '../assets/images/silverlogo.png';
 import silverlogoh from '../assets/images/silverlogoh.png';
 
-export const icons = {
+export default{
     bluhori,
     oh1,
     ohlogo,
