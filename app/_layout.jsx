@@ -30,11 +30,11 @@ const RootLayout = () => {
 
   return (
     <>
-   
-      <Stack>
+
+      <Stack >
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="(form)" options={{ headerShown: false }} />
-        <Stack.Screen name="(navigation)" options={{ headerShown: false }} />
+        <Stack.Screen name="(/form)" options={{ headerShown: false }} />
+        <Stack.Screen name="(/navigation)" options={{ headerShown: false }} />
       </Stack>
 
     </>

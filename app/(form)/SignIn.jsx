@@ -9,7 +9,7 @@ import {
   Linking,
 } from "react-native";
 
-const SignUp = () => {
+const SignIn = () => {
   const [pulseAnimation] = useState(new Animated.Value(1));
 
   // Pulse animation for the title
@@ -40,27 +40,12 @@ const SignUp = () => {
               { transform: [{ scale: pulseAnimation }] },
             ]}
           />
-          <Text style={styles.title}>Sign Up</Text>
+          <Text style={styles.title}>Sign In</Text>
         </View>
         <Text style={styles.message}>
           Signup now and get full access to our app.
         </Text>
-        <View style={styles.flex}>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              placeholder="Firstname"
-              style={styles.input}
-              placeholderTextColor="#777"
-            />
-          </View>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              placeholder="Lastname"
-              style={styles.input}
-              placeholderTextColor="#777"
-            />
-          </View>
-        </View>
+      
         <View style={styles.inputWrapper}>
           <TextInput
             placeholder="Email"
@@ -71,14 +56,6 @@ const SignUp = () => {
         <View style={styles.inputWrapper}>
           <TextInput
             placeholder="Password"
-            secureTextEntry
-            style={styles.input}
-            placeholderTextColor="#777"
-          />
-        </View>
-        <View style={styles.inputWrapper}>
-          <TextInput
-            placeholder="Confirm password"
             secureTextEntry
             style={styles.input}
             placeholderTextColor="#777"
@@ -180,4 +157,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUp;
+export default SignIn;
