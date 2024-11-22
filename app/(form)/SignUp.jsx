@@ -1,18 +1,50 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Animated,
-  Linking,
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Animated } from "react-native";
+import { Client, Account, ID, Models } from "react-native-appwrite";
+
+
+
+const client = new Client()
+
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("673fe45b001e91b5e1d9") // Your Project ID
+  .setPlatform("com.trident.onehome");
+
+const account = new Account(client);
 
 const SignUp = () => {
-  const [pulseAnimation] = useState(new Animated.Value(1));
+  // const [loggedInUser, setLoggedInUser] =
+  //   (useState < Models.User) | (null > null);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle login
+  async function login(email, password) {
+    await account.createEmailPasswordSession(email, password);
+    setLoggedInUser(await account.get());
+  }
+
+  // Handle register
+  async function register(email, password, name) {
+    setIsSubmitting(true);
+    try {
+      await account.create(ID.unique(), email, password, name);
+      await login(email, password);
+      setLoggedInUser(await account.get());
+      alert("User created and logged in successfully!");
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   // Pulse animation for the title
+  const [pulseAnimation] = useState(new Animated.Value(1));
+
   React.useEffect(() => {
     Animated.loop(
       Animated.sequence([
@@ -35,10 +67,7 @@ const SignUp = () => {
       <View style={styles.form}>
         <View style={styles.titleWrapper}>
           <Animated.View
-            style={[
-              styles.pulseCircle,
-              { transform: [{ scale: pulseAnimation }] },
-            ]}
+            style={[styles.pulseCircle, { transform: [{ scale: pulseAnimation }] }]}
           />
           <Text style={styles.title}>Sign Up</Text>
         </View>
@@ -48,14 +77,9 @@ const SignUp = () => {
         <View style={styles.flex}>
           <View style={styles.inputWrapper}>
             <TextInput
-              placeholder="Firstname"
-              style={styles.input}
-              placeholderTextColor="#777"
-            />
-          </View>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              placeholder="Lastname"
+              placeholder="Full Name"
+              value={name}
+              onChangeText={setName}
               style={styles.input}
               placeholderTextColor="#777"
             />
@@ -64,6 +88,9 @@ const SignUp = () => {
         <View style={styles.inputWrapper}>
           <TextInput
             placeholder="Email"
+            keyboardType="email-address"
+            value={email}
+            onChangeText={setEmail}
             style={styles.input}
             placeholderTextColor="#777"
           />
@@ -71,21 +98,21 @@ const SignUp = () => {
         <View style={styles.inputWrapper}>
           <TextInput
             placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
             secureTextEntry
             style={styles.input}
             placeholderTextColor="#777"
           />
         </View>
-        <View style={styles.inputWrapper}>
-          <TextInput
-            placeholder="Confirm password"
-            secureTextEntry
-            style={styles.input}
-            placeholderTextColor="#777"
-          />
-        </View>
-        <TouchableOpacity style={styles.submit}>
-          <Text style={styles.submitText}>Submit</Text>
+        <TouchableOpacity
+          style={[styles.submit, isSubmitting && { opacity: 0.5 }]}
+          onPress={() => register(email, password, name)}
+          disabled={isSubmitting}
+        >
+          <Text style={styles.submitText}>
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -167,16 +194,6 @@ const styles = StyleSheet.create({
   submitText: {
     color: "#fff",
     fontSize: 16,
-  },
-  signin: {
-    textAlign: "center",
-    color: "#dddde8",
-    fontSize: 14,
-    marginTop: 10,
-  },
-  signinLink: {
-    color: "royalblue",
-    textDecorationLine: "underline",
   },
 });
 

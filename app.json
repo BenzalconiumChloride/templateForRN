@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/silverlogo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.trident.onehome"
     },
     "web": {
       "bundler": "metro",
