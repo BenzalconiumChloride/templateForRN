@@ -6,29 +6,54 @@ import {
   TouchableOpacity,
   StyleSheet,
   Animated,
-  Linking,
+  Alert,
 } from "react-native";
+import { Link, router } from "expo-router";
+import { signIn, getCurrentUser } from "../../lib/appwriteConfig";
 
 const SignIn = () => {
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+   const [isSubmitting, setSubmitting] = useState(false);
 
  const Submit = async () => {
-    if (username === "" || email === "" || form.password === "") {
-      Alert.alert("Error", "Please fill in all fields");
-    }
+   if (email === "" || password === "") {
+     Alert.alert("Error", "Please fill in all fields");
+     return;
+   }
 
-    setSubmitting(true);
-    try {
-      const result = await createUser(email, password, username);
-      setUser(result);
-      setIsLogged(true);
+   setSubmitting(true);
 
-      router.replace("../(navigation)/(tabs)/Home");
-    } catch (error) {
-      Alert.alert("Error", error.message);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+   try {
+     console.log("Attempting sign-in...");
+     const session = await signIn(email, password);
+     console.log("Session created:", session);
+
+     if (session) {
+       console.log("Sign-in successful");
+
+       const result = await getCurrentUser();
+       console.log("Current user:", result);
+
+       if (result) {
+         Alert.alert("Success", "User signed in successfully" + ' ' + result.username);
+
+
+         console.log("Navigating to /home");
+         router.replace("/home");
+       } else {
+         Alert.alert("Error", "Failed to fetch user data");
+       }
+     }
+   } catch (error) {
+     console.error("Error during sign-in process:", error); // Log the error here as well
+     Alert.alert("Error", error.message || "Something went wrong");
+   } finally {
+     setSubmitting(false);
+   }
+ };
+
+
 
   const [pulseAnimation] = useState(new Animated.Value(1));
 
@@ -65,10 +90,12 @@ const SignIn = () => {
         <Text style={styles.message}>
           Signup now and get full access to our app.
         </Text>
-      
+
         <View style={styles.inputWrapper}>
           <TextInput
             placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
             style={styles.input}
             placeholderTextColor="#777"
           />
@@ -76,13 +103,21 @@ const SignIn = () => {
         <View style={styles.inputWrapper}>
           <TextInput
             placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
             secureTextEntry
             style={styles.input}
             placeholderTextColor="#777"
           />
         </View>
-        <TouchableOpacity style={styles.submit}>
-          <Text style={styles.submitText}>Submit</Text>
+        <TouchableOpacity
+          style={[styles.submit, isSubmitting && { opacity: 0.5 }]}
+          onPress={Submit} // No need to pass arguments
+          disabled={isSubmitting}
+        >
+          <Text style={styles.submitText}>
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -152,7 +187,7 @@ const styles = StyleSheet.create({
     borderColor: "#bebecb",
     borderRadius: 10,
     fontSize: 16,
-    color: "#dddde8",
+    color: "#000",
   },
   submit: {
     backgroundColor: "royalblue",

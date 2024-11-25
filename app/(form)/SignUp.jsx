@@ -8,30 +8,30 @@ import {
   Animated,
   Alert,
 } from "react-native";
-import { useRouter } from "expo-router"; // Import useRouter for navigation
+import { useRouter, Link, router } from "expo-router"; // Import useRouter for navigation
 import { createUser } from "../../lib/appwriteConfig";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
 
   const router = useRouter(); // Initialize router
 
   const Submit = async () => {
-    if (!name === "" || !email === "" || !password === "") {
+    if (!username === "" || !email === "" || !password === "") {
       Alert.alert("Error", "Please fill in all fields");
       return; // Exit early
     }
 
     setSubmitting(true);
     try {
-      const result = await createUser(email, password, name);
+      const result = await createUser(email, password, username);
       Alert.alert("Success", "Account created successfully!");
 
       // Redirect to the Sign In page
-      router.replace("/SignIn");
+      router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message || "Something went wrong");
     } finally {
@@ -78,8 +78,8 @@ const SignUp = () => {
           <View style={styles.inputWrapper}>
             <TextInput
               placeholder="Full Name"
-              value={name}
-              onChangeText={setName}
+              value={username}
+              onChangeText={setUserName}
               style={styles.input}
               placeholderTextColor="#777"
             />
