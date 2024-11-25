@@ -10,6 +10,7 @@ import scan from '../assets/icons/scan.png';
 import question from '../assets/icons/question.png';
 import info from '../assets/icons/info.png';
 import contact from '../assets/icons/contact.png';
+import logout from '../assets/icons/logout.png';
 
 export default {
     history,
@@ -24,4 +25,5 @@ export default {
     question,
     info,
     contact,
+    logout,
 }
