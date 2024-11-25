@@ -1,46 +1,43 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Animated } from "react-native";
-import { Client, Account, ID, Models } from "react-native-appwrite";
-
-
-
-const client = new Client()
-
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("673fe45b001e91b5e1d9") // Your Project ID
-  .setPlatform("com.trident.onehome");
-
-const account = new Account(client);
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Animated,
+  Alert,
+} from "react-native";
+import { useRouter } from "expo-router"; // Import useRouter for navigation
+import { createUser } from "../../lib/appwriteConfig";
 
 const SignUp = () => {
-  // const [loggedInUser, setLoggedInUser] =
-  //   (useState < Models.User) | (null > null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [isSubmitting, setSubmitting] = useState(false);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter(); // Initialize router
 
-  // Handle login
-  async function login(email, password) {
-    await account.createEmailPasswordSession(email, password);
-    setLoggedInUser(await account.get());
-  }
-
-  // Handle register
-  async function register(email, password, name) {
-    setIsSubmitting(true);
-    try {
-      await account.create(ID.unique(), email, password, name);
-      await login(email, password);
-      setLoggedInUser(await account.get());
-      alert("User created and logged in successfully!");
-    } catch (error) {
-      alert(`Error: ${error.message}`);
-    } finally {
-      setIsSubmitting(false);
+  const Submit = async () => {
+    if (!name === "" || !email === "" || !password === "") {
+      Alert.alert("Error", "Please fill in all fields");
+      return; // Exit early
     }
-  }
+
+    setSubmitting(true);
+    try {
+      const result = await createUser(email, password, name);
+      Alert.alert("Success", "Account created successfully!");
+
+      // Redirect to the Sign In page
+      router.replace("/SignIn");
+    } catch (error) {
+      Alert.alert("Error", error.message || "Something went wrong");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   // Pulse animation for the title
   const [pulseAnimation] = useState(new Animated.Value(1));
@@ -67,7 +64,10 @@ const SignUp = () => {
       <View style={styles.form}>
         <View style={styles.titleWrapper}>
           <Animated.View
-            style={[styles.pulseCircle, { transform: [{ scale: pulseAnimation }] }]}
+            style={[
+              styles.pulseCircle,
+              { transform: [{ scale: pulseAnimation }] },
+            ]}
           />
           <Text style={styles.title}>Sign Up</Text>
         </View>
@@ -107,7 +107,7 @@ const SignUp = () => {
         </View>
         <TouchableOpacity
           style={[styles.submit, isSubmitting && { opacity: 0.5 }]}
-          onPress={() => register(email, password, name)}
+          onPress={Submit} // No need to pass arguments
           disabled={isSubmitting}
         >
           <Text style={styles.submitText}>
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     borderColor: "#bebecb",
     borderRadius: 10,
     fontSize: 16,
-    color: "#dddde8",
+    color: "#000",
   },
   submit: {
     backgroundColor: "royalblue",

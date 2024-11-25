@@ -10,6 +10,26 @@ import {
 } from "react-native";
 
 const SignIn = () => {
+
+ const Submit = async () => {
+    if (username === "" || email === "" || form.password === "") {
+      Alert.alert("Error", "Please fill in all fields");
+    }
+
+    setSubmitting(true);
+    try {
+      const result = await createUser(email, password, username);
+      setUser(result);
+      setIsLogged(true);
+
+      router.replace("../(navigation)/(tabs)/Home");
+    } catch (error) {
+      Alert.alert("Error", error.message);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   const [pulseAnimation] = useState(new Animated.Value(1));
 
   // Pulse animation for the title
