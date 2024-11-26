@@ -36,7 +36,7 @@ const SignIn = () => {
        console.log("Current user:", result);
 
        if (result) {
-         Alert.alert("Success", "User signed in successfully" + ' ' + result.username);
+         Alert.alert("Success", "User signed in successfully" + ' ' + result.firstName);
 
 
          console.log("Navigating to /home");

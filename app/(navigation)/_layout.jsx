@@ -70,15 +70,19 @@ const CustomDrawerContent = (props) => {
         onPress={() => router.push("/Contact")} // Simplified path
       />
 
-      <TouchableOpacity
-        style={[styles.logoutButton, isLoggingOut && { opacity: 0.5 }]}
-        onPress={handleLogout}
-        disabled={isLoggingOut}
-      >
-        <Text style={styles.logoutButtonText}>
-          {isLoggingOut ? "Logging Out..." : "Log Out"}
-        </Text>
-      </TouchableOpacity>
+{/* Logout Button */}
+<TouchableOpacity
+      style={[styles.logoutButton, isLoggingOut && { opacity: 0.5 }]}
+      onPress={handleLogout}
+      disabled={isLoggingOut}
+      className="flex flex-row"
+    >
+      <Image source={icons.logout} style={{ width: 24, height: 24 }} />
+          
+          <Text className="ml-3" style={styles.logoutButtonText}>Log Out</Text>
+     
+    </TouchableOpacity>
+
     </DrawerContentScrollView>
   );
 };

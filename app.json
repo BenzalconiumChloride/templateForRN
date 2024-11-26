@@ -9,14 +9,22 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+       "infoPlist": {
+    "NSPhotoLibraryUsageDescription": "We need access to your photo library to let you choose an avatar."
+  }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/silverlogo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.trident.onehome"
+      "package": "com.trident.onehome",
+       "permissions": [
+    "CAMERA",
+    "READ_EXTERNAL_STORAGE",
+    "WRITE_EXTERNAL_STORAGE"
+  ]
     },
     "web": {
       "bundler": "metro",

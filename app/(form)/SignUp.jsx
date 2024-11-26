@@ -14,24 +14,25 @@ import { createUser } from "../../lib/appwriteConfig";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUserName] = useState("");
+  const [firstName, setfirstName] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
+  const [lastName, setlastName] = useState("");
 
   const router = useRouter(); // Initialize router
 
   const Submit = async () => {
-    if (!username === "" || !email === "" || !password === "") {
+    if (!firstName === "" || !lastName === "" || !email === "" || !password === "") {
       Alert.alert("Error", "Please fill in all fields");
       return; // Exit early
     }
 
     setSubmitting(true);
     try {
-      const result = await createUser(email, password, username);
+      const result = await createUser(email, password, firstName, lastName);
       Alert.alert("Success", "Account created successfully!");
 
       // Redirect to the Sign In page
-      router.replace("/home");
+      router.replace("/");
     } catch (error) {
       Alert.alert("Error", error.message || "Something went wrong");
     } finally {
@@ -77,9 +78,19 @@ const SignUp = () => {
         <View style={styles.flex}>
           <View style={styles.inputWrapper}>
             <TextInput
-              placeholder="Full Name"
-              value={username}
-              onChangeText={setUserName}
+              placeholder="First Name"
+              value={firstName}
+              onChangeText={setfirstName}
+              style={styles.input}
+              placeholderTextColor="#777"
+            />
+          </View>
+
+          <View style={styles.inputWrapper}>
+            <TextInput
+              placeholder="Last Name"
+              value={lastName}
+              onChangeText={setlastName}
               style={styles.input}
               placeholderTextColor="#777"
             />

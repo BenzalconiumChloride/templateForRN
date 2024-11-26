@@ -128,12 +128,13 @@ const TabsLayout = () => {
               styles.tabBarStyle,
               isKeyboardVisible && { display: "none" }, // Hide tab bar when keyboard is visible
             ],
+           
           }}
         >
           <Tabs.Screen
             name="home"
             options={{
-              title: "Home",
+              headerShown: false,
               tabBarIcon: ({ color, focused }) => (
                 <TabIcon
                   iconFilled={icons.home}
@@ -148,7 +149,7 @@ const TabsLayout = () => {
           <Tabs.Screen
             name="history"
             options={{
-              title: "History",
+             headerShown: false,
               tabBarIcon: ({ color, focused }) => (
                 <TabIcon
                   iconFilled={icons.history}
@@ -185,7 +186,7 @@ const TabsLayout = () => {
           <Tabs.Screen
             name="profile"
             options={{
-              title: "Profile",
+              headerShown: false,
               tabBarIcon: ({ color, focused }) => (
                 <TabIcon
                   iconFilled={icons.profile}
