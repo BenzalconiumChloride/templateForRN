@@ -12,8 +12,12 @@ import info from '../assets/icons/info.png';
 import contact from '../assets/icons/contact.png';
 import logout from '../assets/icons/logout.png';
 import edit from '../assets/icons/edit.png';
+import eye from '../assets/icons/eye.png';
+import eyehide from '../assets/icons/eyehide.png';
 
 export default {
+    eye,
+    eyehide,
     history,
     history1,
     home,

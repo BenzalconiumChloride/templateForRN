@@ -18,6 +18,7 @@ import { Link } from "expo-router";
 const Tab = createBottomTabNavigator();
 
 const TabIcon = ({ iconFilled, iconOutlined, color, name, focused }) => {
+  
   return (
     <View style={[styles.tabContainer, focused && styles.focusedTab]}>
       {focused && <View style={styles.highlightCircle} />}
@@ -94,6 +95,7 @@ const ServicesTabScreen = () => {
 };
 
 const TabsLayout = () => {
+  
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
@@ -213,13 +215,13 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#fff",
-    width: 65,
-    height: 60,
-    borderBottomLeftRadius: 35,
-    borderBottomRightRadius: 35,
+    width: 70,
+    height: 45,
+    borderBottomLeftRadius: 70,
+    borderBottomRightRadius: 70,
     justifyContent: "center",
     alignItems: "center",
-    top: -5,
+    top: -15,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 1,
@@ -304,7 +306,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 24,
     height: 24,
-    top: 10,
+    top: 15,
   },
   focusedIcon: {
     tintColor: "#fff",
@@ -314,7 +316,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 12,
     color: "#fff",
-    top: 10,
+    top: 15,
   },
   focusedLabel: {
     fontWeight: "600",
@@ -323,8 +325,8 @@ const styles = StyleSheet.create({
   tabBarStyle: {
     backgroundColor: "#022c5c",
     height: 70,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     position: "absolute",
     left: 0,
     right: 0,
@@ -334,12 +336,12 @@ const styles = StyleSheet.create({
   circularBackground: {
     position: "absolute",
     backgroundColor: "#022c5c",
-    borderRadius: 35,
-    height: 50,
-    width: 50,
+    borderRadius: 40,
+    height: 55,
+    width: 55,
     alignItems: "center",
     justifyContent: "center",
-    top: 2,
+    top: -15,
   },
 });
 

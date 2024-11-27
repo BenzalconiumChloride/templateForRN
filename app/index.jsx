@@ -15,6 +15,7 @@ import SignUp from "./(form)/SignUp";
 import { Link } from "expo-router";
 
 export default function App() {
+  
   const [showSignIn, setShowSignIn] = useState(true); // State to toggle between SignIn and SignUp
 
   return (

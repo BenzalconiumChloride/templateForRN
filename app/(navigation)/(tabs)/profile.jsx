@@ -1,4 +1,5 @@
-import { View, Text, SafeAreaView, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet } from 'react-native'
+import { SafeAreaView } from "react-native-safe-area-context";
 import React from 'react'
 import { useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -11,7 +12,7 @@ const Profile = () => {
   
 
   return (
-    <SafeAreaView className="h-full w-full mt-16">
+    <SafeAreaView className="h-full w-full">
       <Image
         className="flex items-center justify-center mb-3"
         source={images.bluhori}
@@ -41,7 +42,7 @@ const Profile = () => {
         </View>
       </LinearGradient>
 
-      <LinearGradient colors={["#d9d9d9", "#fff"]}>
+      
         <View className="w-full p-4">
           <Text className="font-psemibold text-3xl px-4">Address</Text>
           <Text className="font-psemibold text-lg px-4">Home</Text>
@@ -53,7 +54,7 @@ const Profile = () => {
             43 Bourkle Street, Newbridge, NY 36211
           </Text>
         </View>
-      </LinearGradient>
+     
 
       <View className="w-full mt-24 bg-white">
         <QRCodeGenerator />

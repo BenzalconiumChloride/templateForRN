@@ -17,11 +17,13 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
+    "@react-native-async-storage/async-storage": "^2.1.0",
     "@react-native/virtualized-lists": "^0.76.3",
     "@react-navigation/bottom-tabs": "^7.0.0",
     "@react-navigation/drawer": "^7.0.6",
     "@react-navigation/native": "^7.0.0",
     "appwrite": "^16.0.2",
+    "base-64": "^1.0.0",
     "expo": "~52.0.7",
     "expo-blur": "~14.0.1",
     "expo-constants": "~17.0.3",
