@@ -7,12 +7,14 @@ import { screenOptions } from './_layout';
 import { images } from '../../../constants';
 import QRCodeGenerator from '../../../components/QRCodeGenerator';
 import ProfileInfo from '../../../components/ProfileInfo';
+import { StatusBar } from 'expo-status-bar';
 
 const Profile = () => {
   
 
   return (
     <SafeAreaView className="h-full w-full">
+      <StatusBar style="dark" />
       <Image
         className="flex items-center justify-center mb-3"
         source={images.bluhori}
@@ -36,27 +38,25 @@ const Profile = () => {
 
       {/* end of profile details */}
       <LinearGradient colors={["#d9d9d9", "#fff"]}>
-        <View className="h-20 w-full mt-1 flex-row justify-between items-center px-4">
+        <View className="h-16 w-full mt-1 flex-row justify-between items-center px-6">
           <Text className="font-pmedium text-3xl">My Wallet</Text>
           <Text className="font-pmedium text-3xl">30000</Text>
         </View>
       </LinearGradient>
 
-      
-        <View className="w-full p-4">
-          <Text className="font-psemibold text-3xl px-4">Address</Text>
-          <Text className="font-psemibold text-lg px-4">Home</Text>
-          <Text className="font-pregular text-lg px-4">
-            121 Park Avenue, King Street, NY 23561
-          </Text>
-          <Text className="font-psemibold text-lg px-4">Office</Text>
-          <Text className="font-pregular text-lg px-4">
-            43 Bourkle Street, Newbridge, NY 36211
-          </Text>
-        </View>
-     
+      <View className="w-full p-4">
+        <Text className="font-psemibold text-3xl px-4">Address</Text>
+        <Text className="font-psemibold text-lg px-4">Home</Text>
+        <Text className="font-pregular text-lg px-4">
+          121 Park Avenue, King Street, NY 23561
+        </Text>
+        <Text className="font-psemibold text-lg px-4">Office</Text>
+        <Text className="font-pregular text-lg px-4">
+          43 Bourkle Street, Newbridge, NY 36211
+        </Text>
+      </View>
 
-      <View className="w-full mt-24 bg-white">
+      <View className="w-full mt-20 bg-white">
         <QRCodeGenerator />
       </View>
     </SafeAreaView>

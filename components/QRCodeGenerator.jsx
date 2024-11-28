@@ -46,7 +46,7 @@ const QRCodeGenerator = () => {
     <View style={styles.container}>
       <QRCode
         value={userId} // The QR Code contains the user's AccountId
-        size={150}
+        size={120}
         color="black"
         backgroundColor="white"
       />

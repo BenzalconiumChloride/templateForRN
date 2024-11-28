@@ -9,6 +9,7 @@ import {
   Keyboard,
   TouchableOpacity,
   Animated,
+  Modal,
 } from "react-native";
 import { Tabs } from "expo-router";
 import { icons, images } from "../../../constants";
@@ -51,16 +52,6 @@ const ServicesTabScreen = () => {
     }).start();
   };
 
-  const menuStyle = {
-    transform: [
-      {
-        translateY: animation.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, -270], // Adjust this value for how far the options should appear
-        }),
-      },
-    ],
-  };
 
   return (
     <View style={styles.container}>
@@ -73,23 +64,67 @@ const ServicesTabScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <Animated.View style={[styles.menu, menuStyle]}>
-        {menuVisible && (
-          <>
-            <TouchableOpacity style={styles.option1}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={menuVisible}
+        onRequestClose={toggleMenu}
+      >
+        <View style={styles.modalOverlay}>
+          <Animated.View
+            style={[styles.menu]}
+            className="items-center justify-space-between"
+          >
+            <TouchableOpacity style={styles.option} onPress={toggleMenu}>
               <Text style={styles.optionText}>
-                <Link href="/services">Option A</Link>
+                <Link href="/services">
+                  <Image
+                    source={icons.carpentry}
+                    style={{ tintColor: "#fff" }}
+                    className="w-[50] h-[50]"
+                  />
+                </Link>
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.option2}>
-              <Text style={styles.optionText}>Option B</Text>
+            <TouchableOpacity style={styles.option} onPress={toggleMenu}>
+              <Link href="/services">
+                <Image
+                  source={icons.plumber}
+                  style={{ tintColor: "#fff" }}
+                  className="w-[50] h-[50]"
+                />
+              </Link>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.option3}>
-              <Text style={styles.optionText}>Option C</Text>
+            <TouchableOpacity style={styles.option} onPress={toggleMenu}>
+              <Link href="/services">
+                <Image
+                  source={icons.electrical}
+                  style={{ tintColor: "#fff" }}
+                  className="w-[50] h-[50]"
+                />
+              </Link>
             </TouchableOpacity>
-          </>
-        )}
-      </Animated.View>
+            <TouchableOpacity style={styles.option} onPress={toggleMenu}>
+              <Link href="/services">
+                <Image
+                  source={icons.roof}
+                  style={{ tintColor: "#fff" }}
+                  className="w-[50] h-[50]"
+                />
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.option} onPress={toggleMenu}>
+              <Link href="/services">
+                <Image
+                  source={icons.painting}
+                  style={{ tintColor: "#fff" }}
+                  className="w-[50] h-[50]"
+                />
+              </Link>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -207,7 +242,6 @@ const TabsLayout = () => {
 };
 
 const styles = StyleSheet.create({
-  
   container: {
     flex: 1,
     justifyContent: "center",
@@ -234,55 +268,32 @@ const styles = StyleSheet.create({
     color: "#1e1e1e",
   },
   menu: {
-    position: "absolute",
-    top: 68, // Adjust position based on your layout
-    alignItems: "center",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 30,
+  },
+
+  // modal
+  modalOverlay: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   // options
-  option1: {
+  option: {
     backgroundColor: "#022c5c",
     borderColor: "#e0e0f6",
     borderWidth: 2,
-    width: 55,
-    height: 55,
-    borderRadius: 27.5,
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-    top: 140,
-    right: 60,
+    width: 70,
+    height: 70,
+    borderRadius: 40,
     transitionDelay: 100,
-  },
-
-  option2: {
-    backgroundColor: "#022c5c",
-    borderColor: "#e0e0f6",
-    borderWidth: 2,
-    width: 55,
-    height: 55,
-    borderRadius: 27.5,
     justifyContent: "center",
     alignItems: "center",
-    position: "relative",
-    top: 40,
-    transitionDelay: 200,
+    
   },
 
-  option3: {
-    backgroundColor: "#022c5c",
-    borderColor: "#e0e0f6",
-    borderWidth: 2,
-    width: 55,
-    height: 55,
-    borderRadius: 27.5,
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-    left: 60,
-    top: 30,
-    transitionDelay: 300,
-  },
-  // end of options
   optionText: {
     color: "#fff",
     fontWeight: "100",

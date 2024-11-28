@@ -14,9 +14,19 @@ import logout from '../assets/icons/logout.png';
 import edit from '../assets/icons/edit.png';
 import eye from '../assets/icons/eye.png';
 import eyehide from '../assets/icons/eyehide.png';
+import carpentry from '../assets/icons/carpentry.png';
+import electrical from '../assets/icons/electrical.png';
+import plumber from '../assets/icons/plumber.png';
+import painting from '../assets/icons/painting.png';
+import roof from '../assets/icons/roof.png';
 
 export default {
     eye,
+    carpentry,
+    electrical,
+    plumber,
+    painting,
+    roof,
     eyehide,
     history,
     history1,
