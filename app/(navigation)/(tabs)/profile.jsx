@@ -15,18 +15,22 @@ const Profile = () => {
   return (
     <SafeAreaView className="h-full w-full">
       <StatusBar style="dark" />
-      <Image
-        className="flex items-center justify-center mb-3"
-        source={images.bluhori}
-        style={{ alignSelf: "center", height: 60, width: 300 }}
-      />
+      <View className="flex items-center justify-center mb-3">
+        <Image
+          source={images.bluhori}
+          className="w-[300] h-[40]"
+          style={{ resizeMode: "contain" }}
+        />
+      </View>
       <LinearGradient
         colors={["#022c5c", "#1c16bd"]}
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
       >
         <View className="items-center justify-center h-20">
-          <Text className="text-white font-pmedium text-3xl ">My Profile </Text>
+          <Text className="text-gray-100 font-pmedium text-3xl ">
+            My Profile{" "}
+          </Text>
         </View>
       </LinearGradient>
 

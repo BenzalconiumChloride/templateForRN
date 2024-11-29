@@ -16,8 +16,9 @@ import { icons, images } from "../../../constants";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Link } from "expo-router";
 
-const Tab = createBottomTabNavigator();
 
+
+const Tab = createBottomTabNavigator();
 const TabIcon = ({ iconFilled, iconOutlined, color, name, focused }) => {
   
   return (
@@ -54,7 +55,7 @@ const ServicesTabScreen = () => {
 
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={toggleMenu}>
         <View style={styles.circularBackground}>
           <Image
@@ -125,7 +126,7 @@ const ServicesTabScreen = () => {
           </Animated.View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -206,9 +207,10 @@ const TabsLayout = () => {
             }}
           />
           <Tabs.Screen
+            
             name="updates"
             options={{
-              title: "Updates",
+              headerShown: false,
               tabBarIcon: ({ color, focused }) => (
                 <TabIcon
                   iconFilled={icons.notif}

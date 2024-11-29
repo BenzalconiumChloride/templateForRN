@@ -9,11 +9,13 @@ const Home = () => {
       const { user, logout } = useContext(GlobalContext);
   return (
     <SafeAreaView>
-      <Image
-        className="flex items-center justify-center mb-3"
-        source={images.bluhori}
-        style={{ alignSelf: "center", height: 60, width: 300 }}
-      />
+      <View className="flex items-center justify-center mb-3">
+        <Image
+          source={images.bluhori}
+          className="w-[300] h-[40] mt-5"
+          style={{ resizeMode: "contain" }}
+        />
+      </View>
       <View className="mt-10">
         <WalletCard />
       </View>
