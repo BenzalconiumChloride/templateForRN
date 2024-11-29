@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FlashList } from "@shopify/flash-list";
+import { LinearGradient } from "expo-linear-gradient";
 
 const DATA = [
   { title: "Received P10,000 from 987654321" },
@@ -10,32 +11,31 @@ const DATA = [
 
 const MyFlashList = () => {
   return (
-    <FlashList
-      data={DATA}
-      renderItem={({ item }) => <Text style={styles.item}>{item.title}</Text>}
-      estimatedItemSize={50}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
-     
-      contentContainerStyle={styles.container}
-    />
+    <LinearGradient colors={["#cbc9db", "#ffffff"]}>
+      <FlashList
+        data={DATA}
+        renderItem={({ item }) => <Text style={styles.item}>{item.title}</Text>}
+        estimatedItemSize={50}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+        contentContainerStyle={styles.container}
+      />
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: "#E1EBEE",
   },
   item: {
     padding: 10,
-    backgroundColor: "#E1EBEE",
     borderRadius: 5,
     marginVertical: 5,
     fontSize: 16,
   },
   separator: {
     height: 1,
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#fff",
   },
   header: {
     fontSize: 18,

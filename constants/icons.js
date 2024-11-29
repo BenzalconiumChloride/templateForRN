@@ -19,8 +19,10 @@ import electrical from '../assets/icons/electrical.png';
 import plumber from '../assets/icons/plumber.png';
 import painting from '../assets/icons/painting.png';
 import roof from '../assets/icons/roof.png';
+import calendar from '../assets/icons/calendar.png';
 
 export default {
+    calendar,
     eye,
     carpentry,
     electrical,

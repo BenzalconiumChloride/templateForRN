@@ -4,6 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { GlobalContext } from '../../../context/GlobalPRovider';
 import WalletCard from '../../../components/WalletCard';
 import { images } from '../../../constants';
+import HomeDropdown from '../../../components/HomeDropdown';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Home = () => {
       const { user, logout } = useContext(GlobalContext);
@@ -18,6 +20,9 @@ const Home = () => {
       </View>
       <View className="mt-10">
         <WalletCard />
+      </View>
+      <View className="mt-10 justify-center items-center">
+          <HomeDropdown />
       </View>
     </SafeAreaView>
   );

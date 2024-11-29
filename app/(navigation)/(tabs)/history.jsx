@@ -9,6 +9,8 @@ import moment from "moment";
 import { ScrollView } from 'react-native-gesture-handler';
 import HistoryFL from '../../../components/HistoryFL';
 import HistoryFilter from '../../../components/HistoryFilter';
+import HistorySubmit from '../../../components/HistorySubmit';
+
 
 
 const History = () => {
@@ -46,11 +48,19 @@ const History = () => {
         </ScrollView>
       </View>
 
-      <View className="mt-5 bg-gray-500 h-full rounded-3xl p-5">
+      <LinearGradient
+        colors={["#cbc9db", "#ffffff"]}
+        className="flex-col h-full p-5"
+      >
         <HistoryFilter />
-      </View>
+
+        <View className="mt-10">
+          <HistorySubmit />
+        </View>
+      </LinearGradient>
     </SafeAreaView>
   );
-}
+};
+
 
 export default History
