@@ -14,6 +14,13 @@ const HistoryFilter = () => {
    const handleConfirm = (date) => {
      setSelectedDate(date);
      hideDatePicker();
+    
+   };
+
+
+   const handleConfirmA = (date) => {
+     setSelectedDateA(date);
+     hideDatePickerA();
    };
   return (
     <View>
@@ -40,6 +47,7 @@ const HistoryFilter = () => {
         />
       </View>
 
+{/* 2nd Date */}
       <View className="mt-5">
         <Text className="text-primary font-psemibold text-xl">To</Text>
       </View>

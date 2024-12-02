@@ -5,12 +5,11 @@ import { GlobalContext } from '../../../context/GlobalPRovider';
 import WalletCard from '../../../components/WalletCard';
 import { images } from '../../../constants';
 import HomeDropdown from '../../../components/HomeDropdown';
-import { ScrollView } from 'react-native-gesture-handler';
 
 const Home = () => {
       const { user, logout } = useContext(GlobalContext);
   return (
-    <SafeAreaView>
+    <SafeAreaView nestedScrollEnabled>
       <View className="flex items-center justify-center mb-3">
         <Image
           source={images.bluhori}

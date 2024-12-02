@@ -14,7 +14,7 @@ const HomeDropdown = () => {
     ]);
 
   return (
-    <View className="w-[350]" style={styles.selectBox}>
+    <View className="w-[350]" style={[styles.selectBox, { zIndex: 1000 }]}>
       <DropDownPicker
         open={open}
         value={value}
@@ -22,8 +22,15 @@ const HomeDropdown = () => {
         setOpen={setOpen}
         setValue={setValue}
         setItems={setItems}
+        modalProps={{
+          animationType: "fade",
+        }}
+        listMode='MODAL'
         style={{
-            borderRadius: 30,
+          borderRadius: 30,
+        }}
+        dropDownContainerStyle={{
+          zIndex: 1000,
         }}
       />
     </View>

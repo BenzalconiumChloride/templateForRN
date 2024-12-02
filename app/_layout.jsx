@@ -5,6 +5,7 @@ import { SplashScreen, Stack } from "expo-router";
 import "../global.css";
 import { useFonts } from "expo-font";
 import { GlobalProvider, GlobalContext } from "../context/GlobalPRovider"; // Ensure correct file path and casing
+import { ModalPortal } from "react-native-modals";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -50,8 +51,8 @@ const RootStack = () => {
       
         <Stack.Screen name="index" options={{ headerShown: false}} />
         <Stack.Screen name="/home" options={{ headerShown: false }} />
-      <Stack.Screen name="(form)" options={{ headerShown: false }} />
-      <Stack.Screen name="(navigation)" options={{ headerShown: false }} />
+        <Stack.Screen name="(form)" options={{ headerShown: false }} />
+        <Stack.Screen name="(navigation)" options={{ headerShown: false }} />
     </Stack>
   );
 };
