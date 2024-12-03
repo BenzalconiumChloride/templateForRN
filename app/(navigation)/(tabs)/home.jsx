@@ -4,12 +4,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { GlobalContext } from '../../../context/GlobalPRovider';
 import WalletCard from '../../../components/WalletCard';
 import { images } from '../../../constants';
-import HomeDropdown from '../../../components/HomeDropdown';
+import MultiSelectComponent from '../../../components/MultiSelectComponent';
+
 
 const Home = () => {
       const { user, logout } = useContext(GlobalContext);
   return (
-    <SafeAreaView nestedScrollEnabled>
+    <SafeAreaView className="h-full w-full">
       <View className="flex items-center justify-center mb-3">
         <Image
           source={images.bluhori}
@@ -20,8 +21,8 @@ const Home = () => {
       <View className="mt-10">
         <WalletCard />
       </View>
-      <View className="mt-10 justify-center items-center">
-          <HomeDropdown />
+      <View className="mt-10 justify-center items-center w-full">
+         <MultiSelectComponent />
       </View>
     </SafeAreaView>
   );

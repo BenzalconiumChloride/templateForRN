@@ -20,8 +20,26 @@ import plumber from '../assets/icons/plumber.png';
 import painting from '../assets/icons/painting.png';
 import roof from '../assets/icons/roof.png';
 import calendar from '../assets/icons/calendar.png';
+import cp from '../assets/icons/cp.png';
+import  gear from '../assets/icons/gear.png';
+import faq from '../assets/icons/faq.png';
+import telephone from '../assets/icons/telephone.png';
+import notebook from '../assets/icons/notebook.png';
+import map from '../assets/icons/map.png';
+import facebook from '../assets/icons/facebook.png';
+import instagram from '../assets/icons/instagram.png';
+import magnifier from '../assets/icons/magnifier.png';
 
 export default {
+    magnifier,
+    facebook,
+    instagram,
+    map,
+    notebook,
+    telephone,
+    faq,
+    gear,
+    cp,
     calendar,
     eye,
     carpentry,

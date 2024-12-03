@@ -7,6 +7,7 @@ import { signOut } from "../../lib/appwriteConfig";
 import { useState } from "react";
 
 import { icons } from "../../constants";
+import DropdownComponent from "../../components/DrawerDropdown";
 
 export const header = () => null; // Disable the default header
 
@@ -46,13 +47,19 @@ const CustomDrawerContent = (props) => {
 
   return (
     <DrawerContentScrollView
-      style={{ backgroundColor: "rgba(240, 240, 240, 0.55)" }} // Content background opacity
+      {...props}
+      contentContainerStyle={{ backgroundColor: "transparent" }}
     >
       <DrawerItem
         icon={() => (
           <Image source={icons.question} style={{ width: 24, height: 24 }} />
         )}
         label={"FAQs"}
+        labelStyle={{
+          color: "black",
+          fontSize: 16,
+          fontFamily: "Poppins-Regular",
+        }}
         onPress={() => router.push("/FAQS")} // Simplified path
       />
       <DrawerItem
@@ -60,29 +67,30 @@ const CustomDrawerContent = (props) => {
           <Image source={icons.info} style={{ width: 24, height: 24 }} />
         )}
         label={"About Us"}
+        labelStyle={{
+          color: "black",
+          fontSize: 16,
+          fontFamily: "Poppins-Regular",
+        }}
         onPress={() => router.push("/About")} // Simplified path
       />
-      <DrawerItem
-        icon={() => (
-          <Image source={icons.contact} style={{ width: 24, height: 24 }} />
-        )}
-        label={"Contact Us"}
-        onPress={() => router.push("/Contact")} // Simplified path
-      />
 
-{/* Logout Button */}
-<TouchableOpacity
-      style={[styles.logoutButton, isLoggingOut && { opacity: 0.5 }]}
-      onPress={handleLogout}
-      disabled={isLoggingOut}
-      className="flex flex-row"
-    >
-      <Image source={icons.logout} style={{ width: 24, height: 24 }} />
-          
-          <Text className="ml-3" style={styles.logoutButtonText}>Log Out</Text>
-     
-    </TouchableOpacity>
+      {/*  Drop Down Contact */}
+      <DropdownComponent />
 
+      {/* Logout Button */}
+      <TouchableOpacity
+        style={[styles.logoutButton, isLoggingOut && { opacity: 0.5 }]}
+        onPress={handleLogout}
+        disabled={isLoggingOut}
+        className="flex flex-row"
+      >
+        <Image source={icons.logout} style={{ width: 24, height: 24 }} />
+
+        <Text className="ml-3" style={styles.logoutButtonText}>
+          Log Out
+        </Text>
+      </TouchableOpacity>
     </DrawerContentScrollView>
   );
 };
