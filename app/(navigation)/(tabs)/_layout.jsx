@@ -85,7 +85,7 @@ const TabsLayout = () => {
                   isKeyboardVisible && { display: "none" }, // Hide tab bar when keyboard is visible
                 ],
               }}
-              style={styles.servicesBG}
+              
             >
               <Tabs.Screen
                 name="home"
@@ -121,6 +121,7 @@ const TabsLayout = () => {
               <Tabs.Screen
                 name="services"
                 options={{
+                  headerShown: false,
                   tabBarButton: () => (
                     <TouchableOpacity
                       onPress={handlePresentModalPress}

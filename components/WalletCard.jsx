@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { icons, images } from '../constants';
 import { useState } from 'react';
-import QrScanner from './QrScanner';
+import { Link } from 'expo-router';
 
 
 const WalletCard = () => {
@@ -50,16 +50,19 @@ const WalletCard = () => {
         </View>
 
         <View className="flex-row justify-between mt-5">
-          <TouchableOpacity className="flex-row items-center bg-gray-100 px-3 py-2 rounded-xl w-[50]">
-            <Text>Cash In</Text>
+          <TouchableOpacity className="flex-row items-center bg-gray-100 justify-center rounded-xl w-[100] h-[40]">
+            <Text className="font-psemibold">Cash In</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-row items-center bg-gray-100 px-3 py-2 rounded-xl w-[50]">
-            <Text>Cash In</Text>
-          </TouchableOpacity>
+<Link href="/services">
+          <Image 
+            source={icons.scan}
+            className="w-[50] h-[40]"
+          />
+</Link>
 
-          <TouchableOpacity className="flex-row items-center bg-gray-100 px-3 py-2 rounded-xl w-[50]">
-            <Text>Pay</Text>
+          <TouchableOpacity className="flex-row justify-center items-center bg-gray-100 rounded-xl w-[100] h-[40]">
+            <Text className="font-psemibold">Pay</Text>
           </TouchableOpacity>
             
         </View>

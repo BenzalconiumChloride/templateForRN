@@ -61,9 +61,7 @@ const QRScanner = () => {
           </TouchableOpacity>
         </CameraView>
       )}
-      {scanned && (
-        <Button title="Scan Again" onPress={() => setScanned(false)} />
-      )}
+      {scanned}
     </View>
   );
 };
@@ -77,7 +75,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   openCameraButton: {
-    backgroundColor: '#007bff',
+    position: 'absolute',
+    bottom: 20,
+    left: '50%',
+    transform: [{ translateX: -50 }],
+    backgroundColor: '#022c5c',
     padding: 15,
     borderRadius: 10,
   },
