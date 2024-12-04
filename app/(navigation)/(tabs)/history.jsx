@@ -33,11 +33,11 @@ const History = () => {
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
       >
-        <View className="items-center justify-center h-20">
+        <View className="items-center justify-center h-[50]">
           <Text className="text-gray-100 font-pmedium text-3xl">History</Text>
         </View>
       </LinearGradient>
-      <View className="ml-5 mt-5 h-[50]">
+      <View className="ml-5 mt-5 h-[40]">
         <Text className="text-primary font-psemibold text-xl">
           As of {formattedDate}
         </Text>

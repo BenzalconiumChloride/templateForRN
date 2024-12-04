@@ -5,6 +5,7 @@ import { GlobalContext } from '../../../context/GlobalPRovider';
 import WalletCard from '../../../components/WalletCard';
 import { images } from '../../../constants';
 import MultiSelectComponent from '../../../components/MultiSelectComponent';
+import QrScanner from '../../../components/QrScanner';
 
 
 const Home = () => {
@@ -14,16 +15,17 @@ const Home = () => {
       <View className="flex items-center justify-center mb-3">
         <Image
           source={images.bluhori}
-          className="w-[300] h-[40] mt-5"
+          className="w-[300] h-[40] mt-2"
           style={{ resizeMode: "contain" }}
         />
       </View>
-      <View className="mt-10">
+      <View className="mt-5">
         <WalletCard />
       </View>
-      <View className="mt-10 justify-center items-center w-full">
+      <View className="mt-10 justify-center items-center w-fit">
          <MultiSelectComponent />
       </View>
+      
     </SafeAreaView>
   );
 }

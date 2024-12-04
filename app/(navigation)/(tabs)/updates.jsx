@@ -26,7 +26,7 @@ const Updates = () => {
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
       >
-        <View className="items-center justify-center h-20">
+        <View className="items-center justify-center h-[50]">
           <Text className="text-gray-100 font-pmedium text-3xl">Updates</Text>
         </View>
       </LinearGradient>

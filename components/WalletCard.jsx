@@ -5,6 +5,7 @@ import { icons, images } from '../constants';
 import { useState } from 'react';
 import QrScanner from './QrScanner';
 
+
 const WalletCard = () => {
      const [isBalanceVisible, setIsBalanceVisible] = useState(true);
 
@@ -26,7 +27,7 @@ const WalletCard = () => {
           <View className="flex-col ml-3">
             <Text className="text-white font-pmedium text-lg"> My Wallet</Text>
 
-            <View className="flex-row mt-1 w-64 justify-between">
+            <View className="flex-row mt-1 w-[200] justify-between">
               <Text className="text-white font-pmedium text-2xl">
                 {" "}
                 ₱ {isBalanceVisible ? "30000" : "•••••"}
@@ -36,7 +37,7 @@ const WalletCard = () => {
                 <Image
                   style={{ tintColor: "white" }}
                   source={isBalanceVisible ? icons.eye : icons.eyehide}
-                  className="w-[30] h-[20] ml-2"
+                  className="w-[25] h-[20] ml-2"
                 />
               </TouchableOpacity>
             </View>
@@ -48,10 +49,19 @@ const WalletCard = () => {
           <Text className="text-white text-3xl">123456789</Text>
         </View>
 
-        <View>
-            {/* cash In btn */}
-       
-            {/* pay btn */}
+        <View className="flex-row justify-between mt-5">
+          <TouchableOpacity className="flex-row items-center bg-gray-100 px-3 py-2 rounded-xl w-[50]">
+            <Text>Cash In</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity className="flex-row items-center bg-gray-100 px-3 py-2 rounded-xl w-[50]">
+            <Text>Cash In</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity className="flex-row items-center bg-gray-100 px-3 py-2 rounded-xl w-[50]">
+            <Text>Pay</Text>
+          </TouchableOpacity>
+            
         </View>
       </LinearGradient>
     </View>
@@ -60,8 +70,9 @@ const WalletCard = () => {
 }
 
 const styles = StyleSheet.create({
+ 
   cardBox: {
-    width: 350,
+    width: '90%',
     height: 200,
     borderRadius: 20,
     padding: 20,

@@ -47,7 +47,7 @@ export default function App() {
           </Text>
         </TouchableOpacity>
 
-      <Link href={"/home"}>
+      <Link href={"./(navigation)/(tabs)/home"}>
           To Home
       </Link>
 
