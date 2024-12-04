@@ -3,6 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { icons, images } from '../constants';
 import { useState } from 'react';
+import QrScanner from './QrScanner';
 
 const WalletCard = () => {
      const [isBalanceVisible, setIsBalanceVisible] = useState(true);
@@ -49,7 +50,7 @@ const WalletCard = () => {
 
         <View>
             {/* cash In btn */}
-            {/* qr button */}
+       
             {/* pay btn */}
         </View>
       </LinearGradient>

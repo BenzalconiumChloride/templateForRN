@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   ScrollView,
   Image,
-  StyleSheet,
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";

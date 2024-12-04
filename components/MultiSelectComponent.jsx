@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 import { MultiSelect } from "react-native-element-dropdown";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons"; // For checkmark icon
 import { icons } from "../constants";
 
 const data = [
@@ -19,11 +20,31 @@ const MultiSelectComponent = () => {
   const [selected, setSelected] = useState([]);
 
   const renderItem = (item) => {
+    const isSelected = selected.includes(item.value);
+
     return (
-      <View style={styles.item}>
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => {
+          if (isSelected) {
+            setSelected(selected.filter((val) => val !== item.value));
+          } else {
+            setSelected([...selected, item.value]);
+          }
+        }}
+      >
         <Text style={styles.selectedTextStyle}>{item.label}</Text>
-        
-      </View>
+        {/* Checkbox logic */}
+        {isSelected ? (
+          <MaterialIcons name="check-box" size={20} color="green" />
+        ) : (
+          <MaterialIcons
+            name="check-box-outline-blank"
+            size={20}
+            color="gray"
+          />
+        )}
+      </TouchableOpacity>
     );
   };
 
@@ -42,11 +63,9 @@ const MultiSelectComponent = () => {
         value={selected}
         search
         searchPlaceholder="Search..."
-        onChange={(item) => {
-          setSelected(item);
-        }}
+        onChange={(item) => setSelected(item)}
         renderRightIcon={() => (
-         <Image source={icons.magnifier} className="w-[25] h-[25]"/>
+          <Image source={icons.magnifier} style={styles.iconStyle} />
         )}
         renderItem={renderItem}
         renderSelectedItem={(item, unSelect) => (
@@ -81,7 +100,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
-
     elevation: 2,
   },
   placeholderStyle: {
@@ -125,7 +143,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
-
     elevation: 2,
   },
   textSelectedStyle: {
